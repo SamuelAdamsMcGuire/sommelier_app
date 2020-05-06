@@ -12,8 +12,11 @@ import numpy as np
 from flask import Flask, render_template, request
 from utils.wine_functions import clever_recommender, custom_tokenizer
 
+df = pd.read_csv('data/df_nonans.csv', index_col=0)
 
 app = Flask(__name__)
+
+app.jinja_env.filters['zip'] = zip
 
 
 @app.route('/')
@@ -96,7 +99,19 @@ def user_page():
     #should query go through tokenizer?    
     query = reduce(operator.concat, query)
     query = [' '.join(query)]
-  
-    wine = clever_recommender(words, ml, query)
+    variety = clever_recommender(words, ml, query)
+    
+    r1 = df.loc[df['variety']==variety[0]].sort_values(by='variety', ascending=False).head(1)
+    r1 = list(r1['title'])
+    r2 = df.loc[df['variety']==variety[1]].sort_values(by='variety', ascending=False).head(1)
+    r2 = list(r2['title'])
+    r3 = df.loc[df['variety']==variety[2]].sort_values(by='variety', ascending=False).head(1)
+    r3 = list(r3['title'])
 
-    return render_template('user.html', movies=wine)
+    recs = []
+    recs.append(r1)
+    recs.append(r2)
+    recs.append(r3)
+    wine = reduce(operator.concat, recs)
+
+    return render_template('user.html', variety=variety, wine=wine )
