@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/free">
+    <section class="main-splash">
+      
+        <h2 class="merp">Free Trial Recommendations for New Users from Negative Matha Facker!</h3>
+          <h3 class="merp">Please enter three movies and your ratings for each:</h3>
+
+        <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" name="movie_1" placeholder="movie" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" name="rating_1" placeholder="rating" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" name="movie_2" placeholder="movie" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" name="rating_2" placeholder="rating" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" name="movie_3" placeholder="movie" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" name="rating_3" placeholder="rating" required>
+            </div>
+        </div>
+        
+
+
+  <div class="button-container">
+
+    <button onclick="location.href='/free'" type="submit" class="btn btn-info">
+      Free Recommendations
+    </button>
+
+  </div>
+
+</section>
+
+{% endblock %}

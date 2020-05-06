@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/user">
+  <section class="main-splash">
+
+    <h3 class="merp">Select answers to find you wine!</h3>
+    <p class="merp"><i>(I will recommend some killer wino bro!).</i></p>
+
+    <div class="row">
+      <label for="inputState">Which Machine Learning model should we use?</label>
+      <select id="inputState" name="model" class="form-control">
+        <option selected>NB Bernoulli</option>
+        <option>NB Multinominal</option>
+        <option>Logistic Regression</option>
+        <option>Gradient Booster</option>
+
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="inputState">What kind of wine?</label>
+      <select id="inputState" name="type" class="form-control">
+        <option selected>Any</option>
+        <option>Red</option>
+        <option>White</option>
+        <option>White and Rosé</option>
+        
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="inputState">Do you prefer sweet or dry wine?</label>
+      <select id="inputState" name="style" class="form-control">
+        <option selected>Sweet</option>
+        <option>Dry</option>
+               
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="inputState">Which best describes your preferred wine style:</label>
+      <select id="inputState" name="style2" class="form-control">
+        <option selected>Light and refreshing</option>
+        <option>Smooth and balanced</option>
+        <option>Full and rich</option>
+        
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="inputState">Which is more appealing fruity or earthy:</label>
+      <select id="inputState" name="appealing" class="form-control">
+        <option selected>Fruity</option>
+        <option>Earthy</option>
+        
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="inputState">Do you like flavors that remind you of caramel, toast and spice (yes or no)?</label>
+      <select id="inputState" name="flavor" class="form-control">
+        <option selected>Yes</option>
+        <option>No</option>
+        
+      </select>
+    </div>
+
+
+    <div class="button-container">
+      <button onclick="location.href='/user'" type="submit" class="btn btn-info">Submit</button>
+    </div>
+    <p></p>
+  
+  </section>
+</form>
+
+
+
+{% endblock %}

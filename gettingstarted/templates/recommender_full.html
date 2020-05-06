@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/results">
+  <section class="main-splash">
+
+    <h3 class="merp">Enter your user ID and the amount of recommendations</h3>
+    <p class="merp"><i>(I will recommend some killer flicks bro!).</i></p>
+
+
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" name="userId" placeholder="User ID" required>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" name="k" placeholder="how many movies" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="inputState">What kind of recommendations would you like?</label>
+      <select id="inputState" name="model" class="form-control">
+        <option selected>From Paul Jaccard</option>
+        <option>From Karl Pearson</option>
+        <option>From the team of Orchini and Tucker</option>
+        <option>Euclid of Alexandria</option>
+        <option>Highest Rated by other users you have not seen!</option>
+
+      </select>
+    </div>
+
+    <div class="button-container">
+      <button type="submit" class="btn btn-danger btn-lg m-3">Submit</button>
+    </div>
+
+
+  </section>
+</form>
+
+
+
+{% endblock %}

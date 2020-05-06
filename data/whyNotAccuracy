@@ -1,0 +1,3 @@
+Usually when the class distribution is unbalanced, accuracy is considered a poor choice as it gives high scores to models which just predict the most frequent class. 
+
+f1_score(y_test, prediction, average='weighted')
