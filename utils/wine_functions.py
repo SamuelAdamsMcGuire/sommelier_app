@@ -1,6 +1,7 @@
 import pickle
 import spacy
 import random
+import en_core_web_sm
 from utils import config
 import pandas as pd
 import numpy as np
@@ -12,7 +13,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 
 
-nlp = spacy.load("en_core_web_sm", disable=["parser", "textcat", "ner"])
+
+
+nlp = en_core_web_sm.load()
+#nlp = spacy.load("en_core_web_sm", disable=["parser", "textcat", "ner"])
 
 #df_all = pd.read_csv('../data/df_nonans.csv', index_col=0)
 

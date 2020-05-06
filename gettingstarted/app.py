@@ -41,16 +41,16 @@ def user_page():
     flavor = request.args.get('flavor')
     query = []
     
-    if model == 'NB Bernoulli':
+    if model == 'model 1':
         vec = config.vec_types['bern_bow']
         m = config.model_types['bern_m']
-    elif model == 'NB Multinominal':
+    elif model == 'model 2':
         vec = config.vec_types['multi_bow']
         m = config.model_types['multi_m']
-    elif model == 'Logistic Regression':
+    elif model == 'model 3':
         vec = config.vec_types['log_bow']
         m = config.model_types['log_m']
-    elif model == 'Gradient Booster':
+    elif model == 'model 4':
         vec = config.vec_types['gb_bow']
         m = config.model_types['gb_m']
     
