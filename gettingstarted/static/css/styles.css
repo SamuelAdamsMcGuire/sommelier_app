@@ -11,7 +11,7 @@
 .main-splash {
   background-color: #252e35;
   height: 100vh;
-  color: #c2d1de;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@
 }
 
 #highlight {
-  color: #33A7FF;
+  color: #7ba4db;
 }
 
 .button-container {

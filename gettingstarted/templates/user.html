@@ -9,8 +9,8 @@
   <div id="movie-results">
   {% for v, w in variety|zip(wine) %}
   <h5 class="recommendations">
-    "We suggest {{v}} as a good match for you. Try {{w}}"</h5>
-  {% endfor %}
+    We suggest <span id="highlight">{{v}}</span> as a good grape variety match for you. <br> Top tip: {{w}}</h5>
+     {% endfor %}
   </div>
 
   <div class="button-container">
