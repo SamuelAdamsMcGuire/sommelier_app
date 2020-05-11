@@ -2,41 +2,18 @@
 Pyhton file to deploy the movie recommender to the web via flask/heroku
 '''
 import pickle
-import spacy
-import random
-from utils import config
 import operator
+from utils import config
 from functools import reduce
 import pandas as pd
-import numpy as np
-from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from sklearn.linear_model import LogisticRegression
-from sklearn import metrics
-from flask import Flask, render_template, request, url_for, redirect
-from utils.wine_functions import custom_tokenizer, clever_recommender, dummy_recommender
+from flask import Flask, render_template, request
+from utils.wine_functions import clever_recommender
 
-
-with open('models/bern/bow.p', 'rb') as f:
-    bow_all = pickle.load(f)
-with open('models/bern/bow_red.p', 'rb') as f:
-    bow_red = pickle.load(f)
-with open('models/bern/bow_w_r.p', 'rb') as f:
-    bow_w_r = pickle.load(f)
-with open('models/bern/bow_white.p', 'rb') as f:
-    bow_white = pickle.load(f)
-
-with open('models/bern/m.p', 'rb') as f:
-    m_all = pickle.load(f)
-with open('models/bern/m_red.p', 'rb') as f:
-    m_red = pickle.load(f)
-with open('models/bern/m_w_r.p', 'rb') as f:
-    m_w_r = pickle.load(f)
-with open('models/bern/m_white.p', 'rb') as f:
-    m_white = pickle.load(f)
-
+df = pd.read_csv('data/df_nonans.csv', index_col=0)
 
 app = Flask(__name__)
+
+app.jinja_env.filters['zip'] = zip
 
 
 @app.route('/')
@@ -56,27 +33,44 @@ def user_page():
     renders the user recommendations using collaborative filtering
     and other simpler methods
     '''
+    model = request.args.get('model')
     wine_type = request.args.get('type')
     style = request.args.get('style')
     style_2 = request.args.get('style2')
     appealing = request.args.get('appealing')
     flavor = request.args.get('flavor')
-    #model = request.args.get('model')
-
     query = []
 
+    if model == 'BernoulliNB':
+        vec = config.vec_types['bern_bow']
+        m = config.model_types['bern_m']
+    elif model == 'MultinominalNB':
+        vec = config.vec_types['multi_bow']
+        m = config.model_types['multi_m']
+    elif model == 'Logistic Regression':
+        vec = config.vec_types['log_bow']
+        m = config.model_types['log_m']
+    elif model == 'GradientBooster':
+        vec = config.vec_types['gb_bow']
+        m = config.model_types['gb_m']
+
     if wine_type == 'Any':
-        m = m_all
-        bow = bow_all
+        bow = vec[0]
+        mod = m[0]
     elif wine_type == 'Red':
-        m = m_red
-        bow = bow_red
+        bow = vec[1]
+        mod = m[1]
     elif wine_type == 'White':
-        m = m_white
-        bow = bow_white
+        bow = vec[2]
+        mod = m[2]
     elif wine_type == 'White and Rosé':
-        m = m_w_r
-        bow = bow_w_r
+        bow = vec[3]
+        mod = m[3]
+
+    with open(bow, 'rb') as f:
+        words = pickle.load(f)
+    with open(mod, 'rb') as f:
+        ml = pickle.load(f)
 
     if style == 'Sweet':
         query.append(config.query_options['sweet'])
@@ -98,10 +92,18 @@ def user_page():
     if flavor == 'Yes':
         query.append(config.query_options['flavor'])
 
+
     #should query go through tokenizer?    
     query = reduce(operator.concat, query)
     query = [' '.join(query)]
+    variety = clever_recommender(words, ml, query)
 
-    wine = clever_recommender(bow, m, query)
+    recs = []
+    for i in range(3):
+        r = df.loc[df['variety'] == variety[i]].sort_values(by='variety', ascending=False).head(1)
+        r = list(r['title'])
+        recs.append(r)
 
-    return render_template('user.html', movies=wine)
+    wine = reduce(operator.concat, recs)
+
+    return render_template('user.html', variety=variety, wine=wine )
