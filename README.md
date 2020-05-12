@@ -19,7 +19,7 @@ The program architecture is all set from the root directory. So when using bash 
 ```bash
 python -m folder.program
 ```
-## Deployment
+## Deployment/Usage
 
 The app was deployed via heroku flask. Please feel free to try it out at:
 
