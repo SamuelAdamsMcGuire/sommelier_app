@@ -92,18 +92,18 @@ def user_page():
     if flavor == 'Yes':
         query.append(config.query_options['flavor'])
 
-
-    #should query go through tokenizer?    
+    # should query go through tokenizer?
     query = reduce(operator.concat, query)
     query = [' '.join(query)]
     variety = clever_recommender(words, ml, query)
 
     recs = []
     for i in range(3):
-        r = df.loc[df['variety'] == variety[i]].sort_values(by='variety', ascending=False).head(1)
+        r = df.loc[df['variety'] == variety[i]].sort_values(
+            by='variety', ascending=False).head(1)
         r = list(r['title'])
         recs.append(r)
 
     wine = reduce(operator.concat, recs)
 
-    return render_template('user.html', variety=variety, wine=wine )
+    return render_template('user.html', variety=variety, wine=wine)

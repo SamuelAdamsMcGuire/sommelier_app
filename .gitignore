@@ -1,6 +1,6 @@
 #to ignore the entire folder
 notebooks/* 
-data/*
+extra_data/*
 testing/*
 
 # Byte-compiled / optimized / DLL files
