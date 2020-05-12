@@ -28,7 +28,7 @@ https://highfivewine.herokuapp.com/
 ## Contributors
 The current (original) data set was scraped by Zack Thoutt and can be found at: https://github.com/zackthoutt/wine-deep-learning
 
-Help and support was given my Malte Bonart on code and wine experts Michael Lagau from www.bin415.com and Allison Negron from www.hillfamilyestate.com
+Help and support from wine experts Michael Lagau from www.bin415.com and Allison Negron from www.hillfamilyestate.com
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
