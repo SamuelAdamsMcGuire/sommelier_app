@@ -1,53 +1,37 @@
-# COMING SOON!
+# Sommelier App
 
-Template for deploying a flask app to heroku.
+Working with a real life Sommelier, a scraped data set from Wine Enthusiast, and my python skills I developed a app that would recommend a wine variety (and suggest a wine) based on 5 your answers from questions. You are also able to choose which machine learning model you prefer.
 
 
 ## Requirements
 
-- free heroku account
-- heroku cli installed and set up locally 
+Are listed in the requirements file
+Though primarily
+- spacy
+- flask
+- pandas
+- heroku
 
-## Instructions
+## Architecture
 
-1. clone the repository
-
-```bash
-git clone https://github.com/bonartm/heroku-flask.git
-cd heroku-flask
-```
-
-2. create a new heroku app
+The program architecture is all set from the root directorly. So when using bash to run any scripts please use the following sturcture
 
 ```bash
-heroku create <my-app-name>`
+python -m folder.program
 ```
+## Deployment
 
-3. test the app locally
+The app was deployed via heroku flask. Please feel free to try it out at:
 
-```bash
-heroku local web
-```
+https://highfivewine.herokuapp.com/
 
-on windows use 
+## Contributors
+The current (original) data set was scraped by Zack Thoutt and can be found at: https://github.com/zackthoutt/wine-deep-learning
 
-```bash
-heroku local web -f Procfile.windows
-```
+Help and support was given my Malte Bonart on code and wine experts Michael Lagau from www.bin415.com and Allison Negron from www.hillfamilyestate.com
 
-4. push code to heroku
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-```bash
-git push heroku master
-```
-
-5. open website in browser
-
-```bash
-heroku open
-```
-
-
-## Further Ressources
-
-- [Official python heroku tutorial](https://devcenter.heroku.com/articles/getting-started-with-python) using Djano
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
