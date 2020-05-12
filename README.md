@@ -14,7 +14,7 @@ Though primarily
 
 ## Architecture
 
-The program architecture is all set from the root directorly. So when using bash to run any scripts please use the following sturcture
+The program architecture is all set from the root directory. So when using bash to run any scripts please use the following structure
 
 ```bash
 python -m folder.program
