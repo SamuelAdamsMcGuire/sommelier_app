@@ -1,4 +1,4 @@
-# Getting started with Flask and Heroku
+# COMING SOON!
 
 Template for deploying a flask app to heroku.
 
