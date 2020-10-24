@@ -5,8 +5,7 @@ Working with a real life Sommelier, a scraped data set from Wine Enthusiast, and
 
 ## Requirements
 
-Are listed in the requirements file
-Though primarily
+Are listed in the requirements file though primarily
 - spacy
 - flask
 - pandas
