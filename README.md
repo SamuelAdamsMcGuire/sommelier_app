@@ -9,23 +9,27 @@ Are listed in the requirements file though primarily
 - spacy
 - flask
 - pandas
-- heroku
+- render
 
 ## Architecture
 
-The program architecture is all set from the root directory. So when using bash to run any scripts please use the following structure
+To run the program locally first install the `requirements.txt` and then execute the following command in the root folder
 
 ```bash
-python -m folder.program
+python wsgi.py
 ```
+
+
 ## Deployment/Usage
 
-The app was deployed via heroku flask. Please feel free to try it out at:
+The app was deployed via render. Please feel free to try it out at:
 
-https://highfivewine.herokuapp.com/
+https://highfivewine.onrender.com
 
 ## Contributors
 The current (original) data set was scraped by Zack Thoutt and can be found at: https://github.com/zackthoutt/wine-deep-learning
+
+I have recently scraped a larger [dataset](https://github.com/SamuelAdamsMcGuire/wine_data_clean) using a [scraper package](https://github.com/SamuelAdamsMcGuire/wine_data_collection) I developed that I want to use to retrain the models when I find the time. 
 
 Help and support from wine experts Michael Lagau from www.bin415.com and Allison Negron from www.hillfamilyestate.com
 
